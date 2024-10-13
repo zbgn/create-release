@@ -20,6 +20,7 @@ async function run() {
     const draft = core.getInput('draft', { required: false }) === 'true';
     const prerelease = core.getInput('prerelease', { required: false }) === 'true';
     const commitish = core.getInput('commitish', { required: false }) || context.sha;
+    const generate_release_notes = core.getInput('generate_release_notes', { required: false }) === 'true';
 
     const bodyPath = core.getInput('body_path', { required: false });
     const owner = core.getInput('owner', { required: false }) || currentOwner;
@@ -42,9 +43,10 @@ async function run() {
       tag_name: tag,
       name: releaseName,
       body: bodyFileContent || body,
-      draft,
-      prerelease,
-      target_commitish: commitish
+      draft: draft,
+      prerelease: prerelease,
+      target_commitish: commitish,
+      generate_release_notes: generate_release_notes
     });
 
     // Get the ID, html_url, and upload URL for the created Release from the response

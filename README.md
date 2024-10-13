@@ -1,27 +1,12 @@
 # GitHub Action - Releases API
 
-**Please note:** This repository is currently unmaintained by a team of developers at GitHub. The 
-repository is here and you can use it as an example, or in Actions. However please be aware that 
-we are not going to be updating issues or pull requests on this repository.
-
-**Maintained Actions:**
-* [elgohr/Github-Release-Action](https://github.com/elgohr/Github-Release-Action)
-* [marvinpinto/action-automatic-releases](https://github.com/marvinpinto/action-automatic-releases)
-* [softprops/action-gh-release](https://github.com/softprops/action-gh-release)
-* [ncipollo/release-action](https://github.com/ncipollo/release-action)
-
-
-To reflect this state we’ve marked this repository as Archived.
-
-If you are having an issue or question about GitHub Actions then please [contact customer support](https://help.github.com/en/articles/about-github-actions#contacting-support).
-
-If you have found a security issue [please submit it here](https://hackerone.com/github).
+**Please note:** This repository is a fork of the original [GitHub Action - Create Release](https://github.com/actions/create-release) repository. The original repository is not maintained anymore. This fork is maintained by myself and I will try to keep it up to date with the latest changes in the Github API.
 
 ---
 
 This GitHub Action (written in JavaScript) wraps the [GitHub Release API](https://developer.github.com/v3/repos/releases/), specifically the [Create a Release](https://developer.github.com/v3/repos/releases/#create-a-release) endpoint, to allow you to leverage GitHub Actions to create releases.
 
-<a href="https://github.com/actions/create-release"><img alt="GitHub Actions status" src="https://github.com/actions/create-release/workflows/Tests/badge.svg"></a>
+<a href="https://github.com/zbgn/create-release"><img alt="GitHub Actions status" src="https://github.com/zbgn/create-release/workflows/Tests/badge.svg"></a>
 
 ## Usage
 ### Pre-requisites
@@ -39,6 +24,7 @@ For more information on these inputs, see the [API Documentation](https://develo
 - `commitish` : Any branch or commit SHA the Git tag is created from, unused if the Git tag already exists. Default: SHA of current commit
 - `owner`: The name of the owner of the repo. Used to identify the owner of the repository.  Used when cutting releases for external repositories.  Default: Current owner
 - `repo`: The name of the repository. Used to identify the repository on which to release.  Used when cutting releases for external repositories. Default: Current repository
+- `generate_release_notes`: `true` to generate release notes based on the comparison between the current and previous commit. Default: `false`
 
 #### `body_path`
 The `body_path` is valuable for dynamically creating a `.md` within code commits and even within the Github Action steps leading up to the `create-release`.
